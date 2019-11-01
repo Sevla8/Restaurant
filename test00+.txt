@@ -1,9 +1,0 @@
-0 : Echec
-1 : OK
-2 : Echec
-3 : OK
-4 : Echec
-5 : OK
-6 : Echec
-7 : Echec
-8 : OK
