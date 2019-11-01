@@ -50,6 +50,7 @@ int tp2(std::istream& entree) {
 				std::cout << "Attention : ce programme supporte uniquement un ordre chronologique (voir section 3.6 / hypothèse 3)!" << std::endl;
 			date = date_preparation;
 
+			inventaire.liquiderProduitsPerimes(date);
 			ListeIngredients ingredientsDisponibles = inventaire.listeIngredientsDisponibles();
 			//
 			// std::cout << ingredientsDisponibles << std::endl;
@@ -68,7 +69,6 @@ int tp2(std::istream& entree) {
 			//
 			// std::cout << ingredientsRequis << std::endl;
 			//
-			inventaire.liquiderProduitsPerimes(date);
 			if (ingredientsRequis.inclu(ingredientsDisponibles)) {
 				inventaire -= ingredientsRequis;
 				std::cout << noCommande << " : OK" << std::endl;
