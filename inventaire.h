@@ -21,7 +21,7 @@ class ListeIngredients {
 	private:
 		ArbreMap<std::string, int> arbreMap;
 	friend std::istream& operator>>(std::istream&, ListeIngredients&);
-	friend std::ostream& operator<<(std::ostream&, ListeIngredients&);
+	friend std::ostream& operator<<(std::ostream&, const ListeIngredients&);
 	friend class Inventaire;
 };
 
@@ -30,11 +30,11 @@ class Inventaire {
 		Inventaire& operator+=(const Inventaire&);
 		Inventaire& operator-=(const ListeIngredients&);
 		void listeIngredientsDisponibles(ListeIngredients&) const;
-		void liquiderProduitsPerimes(Date&);
+		void liquiderProduitsPerimes(const Date&);
 	private:
 		ArbreMap<Date, ListeIngredients> arbreMap;
 	friend std::istream& operator>>(std::istream&, Inventaire&);
-	friend std::ostream& operator<<(std::ostream&, Inventaire&);
+	friend std::ostream& operator<<(std::ostream&, const Inventaire&);
 };
 
 #endif

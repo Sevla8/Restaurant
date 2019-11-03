@@ -54,7 +54,7 @@ class ArbreMap {
 		Iterateur rechercher(const K&) const;
 		Iterateur rechercherEgalOuPrecedent(const K&) const;
 		Iterateur rechercherEgalOuSuivant(const K&) const;
-	friend std::ostream& operator<<(std::ostream& out, ArbreMap<K,V>& arbre) {
+	friend std::ostream& operator<<(std::ostream& out, const ArbreMap<K,V>& arbre) {
 		for (ArbreMap<K,V>::Iterateur iter = arbre.debut(); iter; ++iter)
 			out << iter.cle() << std::endl << arbre[iter] << std::endl;
 		return out;

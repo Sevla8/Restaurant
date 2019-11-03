@@ -50,7 +50,7 @@ std::istream& operator>>(std::istream& is, ListeIngredients& listeIngredients) {
 	return is;
 }
 
-std::ostream& operator<<(std::ostream& os, ListeIngredients& listeIngredients) {
+std::ostream& operator<<(std::ostream& os, const ListeIngredients& listeIngredients) {
 	return os << listeIngredients.arbreMap;
 }
 
@@ -98,7 +98,7 @@ std::istream& operator>>(std::istream& is, Inventaire& inventaire) {
 	return is;
 }
 
-std::ostream& operator<<(std::ostream& os, Inventaire& inventaire) {
+std::ostream& operator<<(std::ostream& os, const Inventaire& inventaire) {
 	return os << inventaire.arbreMap;
 }
 
@@ -108,7 +108,7 @@ void Inventaire::listeIngredientsDisponibles(ListeIngredients& ingredients) cons
 	}
 }
 
-void Inventaire::liquiderProduitsPerimes(Date& date) {
+void Inventaire::liquiderProduitsPerimes(const Date& date) {
 	for (ArbreMap<Date, ListeIngredients>::Iterateur iter = this->arbreMap.debut(); iter; ++iter) {
 		if (iter.cle() <= date)
 			this->arbreMap.enlever(iter.cle());

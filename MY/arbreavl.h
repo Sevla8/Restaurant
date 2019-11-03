@@ -76,7 +76,7 @@ class ArbreAVL {
 				Pile<Noeud*> chemin;
 			friend class ArbreAVL;
 		};
-	friend std::ostream& operator<<(std::ostream& out, ArbreAVL<T>& arbre) {
+	friend std::ostream& operator<<(std::ostream& out, const ArbreAVL<T>& arbre) {
 		for (ArbreAVL<T>::Iterateur iter = arbre.debut(); iter; ++iter)
 			out << *iter << std::endl;
 		return out;
