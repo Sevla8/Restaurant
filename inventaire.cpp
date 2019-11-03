@@ -28,7 +28,9 @@ ListeIngredients& ListeIngredients::operator*=(int facteur) {
 
 bool ListeIngredients::inclu(const ListeIngredients& autre) const {
 	for (ArbreMap<std::string, int>::Iterateur iter = this->arbreMap.debut(); iter; ++iter) {
-		if (!autre.arbreMap.contient(iter.cle()) || iter.valeur() > autre.arbreMap[iter.cle()])
+		if (!autre.arbreMap.contient(iter.cle()))
+			return false;
+		if (iter.valeur() > autre.arbreMap[iter.cle()])
 			return false;
 	}
 	return true;
@@ -63,11 +65,11 @@ Inventaire& Inventaire::operator-=(const ListeIngredients& listeIngredients) {
 	for (ArbreMap<Date, ListeIngredients>::Iterateur iter1 = this->arbreMap.debut(); iter1; ++iter1) {
 		for (ArbreMap<std::string, int>::Iterateur iter2 = ingredients.arbreMap.debut(); iter2; ++iter2) {
 			if (iter2.valeur() != 0) {
-				if (this->arbreMap[iter1].arbreMap[iter2.cle()] != 0) {
-					if (this->arbreMap[iter1].arbreMap[iter2.cle()] < iter2.valeur()) {
-						int tmp = this->arbreMap[iter1].arbreMap[iter2.cle()];
+				int valeurInventaire = this->arbreMap[iter1].arbreMap[iter2.cle()];
+				if (valeurInventaire != 0) {
+					if (valeurInventaire < iter2.valeur()) {
 						this->arbreMap[iter1].arbreMap[iter2.cle()] = 0;
-						ingredients.arbreMap[iter2] -= tmp;
+						ingredients.arbreMap[iter2] -= valeurInventaire;
 					}
 					else {
 						this->arbreMap[iter1].arbreMap[iter2.cle()] -= iter2.valeur();
@@ -100,12 +102,10 @@ std::ostream& operator<<(std::ostream& os, Inventaire& inventaire) {
 	return os << inventaire.arbreMap;
 }
 
-ListeIngredients Inventaire::listeIngredientsDisponibles() const {
-	ListeIngredients ingredients;
+void Inventaire::listeIngredientsDisponibles(ListeIngredients& ingredients) const {
 	for (ArbreMap<Date, ListeIngredients>::Iterateur iter = this->arbreMap.debut(); iter; ++iter) {
 		ingredients += iter.valeur();
 	}
-	return ingredients;
 }
 
 void Inventaire::liquiderProduitsPerimes(Date& date) {

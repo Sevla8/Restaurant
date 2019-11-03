@@ -32,8 +32,8 @@ int tp2(std::istream& entree) {
 		else if (commande == "reception") {
 			Date date_reception;
 			entree >> date_reception;
-			if (date_reception <= date)
-				std::cout << "Attention : ce programme supporte uniquement un ordre chronologique (voir section 3.6 / hypothèse 3)!" << std::endl;
+			// if (date_reception <= date)
+			// 	std::cout << "Attention : ce programme supporte uniquement un ordre chronologique (voir section 3.6 / hypothèse 3)!" << std::endl;
 			date = date_reception;
 
 			Inventaire inventaireRecu;
@@ -46,15 +46,10 @@ int tp2(std::istream& entree) {
 		else if (commande == "reservation") {
 			Date date_preparation;
 			entree >> date_preparation;
-			if (date_preparation <= date)
-				std::cout << "Attention : ce programme supporte uniquement un ordre chronologique (voir section 3.6 / hypothèse 3)!" << std::endl;
+			// if (date_preparation <= date)
+			// 	std::cout << "Attention : ce programme supporte uniquement un ordre chronologique (voir section 3.6 / hypothèse 3)!" << std::endl;
 			date = date_preparation;
 
-			inventaire.liquiderProduitsPerimes(date);
-			ListeIngredients ingredientsDisponibles = inventaire.listeIngredientsDisponibles();
-			//
-			// std::cout << ingredientsDisponibles << std::endl;
-			//
 			ListeIngredients ingredientsRequis;
 			std::string nomRecette;
 			entree >> nomRecette;
@@ -68,6 +63,12 @@ int tp2(std::istream& entree) {
 			}
 			//
 			// std::cout << ingredientsRequis << std::endl;
+			//
+			inventaire.liquiderProduitsPerimes(date);
+			ListeIngredients ingredientsDisponibles;
+			inventaire.listeIngredientsDisponibles(ingredientsDisponibles);
+			//
+			// std::cout << ingredientsDisponibles << std::endl;
 			//
 			if (ingredientsRequis.inclu(ingredientsDisponibles)) {
 				inventaire -= ingredientsRequis;

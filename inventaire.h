@@ -29,7 +29,7 @@ class Inventaire {
 	public:
 		Inventaire& operator+=(const Inventaire&);
 		Inventaire& operator-=(const ListeIngredients&);
-		ListeIngredients listeIngredientsDisponibles() const;
+		void listeIngredientsDisponibles(ListeIngredients&) const;
 		void liquiderProduitsPerimes(Date&);
 	private:
 		ArbreMap<Date, ListeIngredients> arbreMap;
