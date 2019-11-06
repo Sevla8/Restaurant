@@ -112,5 +112,7 @@ void Inventaire::liquiderProduitsPerimes(const Date& date) {
 	for (ArbreMap<Date, ListeIngredients>::Iterateur iter = this->arbreMap.debut(); iter; ++iter) {
 		if (iter.cle() <= date)
 			this->arbreMap.enlever(iter.cle());
+		else 
+			break;
 	}
 }

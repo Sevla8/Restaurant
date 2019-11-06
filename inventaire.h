@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include "date.h"
-#include "MY/arbremap.h"
+#include "STRUCT/arbremap.h"
 
 class ListeIngredients {
 	public:
