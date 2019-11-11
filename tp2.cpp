@@ -40,7 +40,7 @@ int tp2(std::istream& entree) {
 			entree >> inventaireRecu;
 			inventaire += inventaireRecu;
 			//
-			// std::cout << inventaire << std::endl;
+			std::cout << inventaire << std::endl;
 			//
 		}
 		else if (commande == "reservation") {
@@ -78,7 +78,7 @@ int tp2(std::istream& entree) {
 				std::cout << noCommande << " : Echec" << std::endl;
 			noCommande++;
 			//
-			// std::cout << inventaire << std::endl;
+			// std::cout << in⎄/ntaire << std::endl;
 			//
 		}
 		else {
