@@ -32,7 +32,7 @@ class Inventaire {
 		void listeIngredientsDisponibles(ListeIngredients&) const;
 		void liquiderProduitsPerimes(const Date&);
 	private:
-		ArbreMap<std::string, ArbreMap<Date, int>> arbreMap;
+		ArbreMap<Date, ListeIngredients> arbreMap;
 	friend std::istream& operator>>(std::istream&, Inventaire&);
 	friend std::ostream& operator<<(std::ostream&, const Inventaire&);
 };
