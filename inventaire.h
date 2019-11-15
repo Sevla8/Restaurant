@@ -9,15 +9,12 @@
 
 #include <iostream>
 #include "date.h"
-#include "STRUCT/arbremap_.h"
+#include "STRUCT/arbremap.h"
 
 class ListeIngredients {
 	public:
-		ListeIngredients();
-		ListeIngredients(std::string, int);
 		ListeIngredients& operator+=(const ListeIngredients&);
 		ListeIngredients& operator*=(int);
-		bool inclu(const ListeIngredients&) const;
 	private:
 		ArbreMap<std::string, int> arbreMap;
 	friend std::istream& operator>>(std::istream&, ListeIngredients&);
@@ -29,10 +26,10 @@ class Inventaire {
 	public:
 		Inventaire& operator+=(const Inventaire&);
 		Inventaire& operator-=(const ListeIngredients&);
-		void listeIngredientsDisponibles(ListeIngredients&) const;
+		bool ingredientsDisponibles(const ListeIngredients&) const;
 		void liquiderProduitsPerimes(const Date&);
 	private:
-		ArbreMap<Date, ListeIngredients> arbreMap;
+		ArbreMap<std::string, ArbreMap<Date, int>> arbreMap;
 	friend std::istream& operator>>(std::istream&, Inventaire&);
 	friend std::ostream& operator<<(std::ostream&, const Inventaire&);
 };

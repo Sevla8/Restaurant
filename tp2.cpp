@@ -61,16 +61,16 @@ int tp2(std::istream& entree) {
 				ingredientsRequis += tmp;
 				entree >> nomRecette;
 			}
-			//
-			// std::cout << ingredientsRequis << std::endl;
-			//
+			// //
+			// if (noCommande >= 6456) std::cout << ingredientsRequis << std::endl;
+			// //
 			inventaire.liquiderProduitsPerimes(date);
+			// //
+			// if (noCommande >= 6456) std::cout << "NOOOOB" << std::endl;
+			// //
 			ListeIngredients ingredientsDisponibles;
-			inventaire.listeIngredientsDisponibles(ingredientsDisponibles);
-			//
-			// std::cout << ingredientsDisponibles << std::endl;
-			//
-			if (ingredientsRequis.inclu(ingredientsDisponibles)) {
+			bool test = inventaire.ingredientsDisponibles(ingredientsRequis);
+			if (test) {
 				inventaire -= ingredientsRequis;
 				std::cout << noCommande << " : OK" << std::endl;
 			}

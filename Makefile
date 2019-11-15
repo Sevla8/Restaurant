@@ -23,7 +23,7 @@ tp2: tp2.cpp inventaire.o date.o
 date.o: date.h date.cpp
 	g++ $(OPTIONS) -c -o date.o date.cpp
 
-inventaire.o: inventaire.h inventaire.cpp date.h STRUCT/arbremap_.h
+inventaire.o: inventaire.h inventaire.cpp date.h STRUCT/arbremap.h STRUCT/arbreavl.h
 	g++ $(OPTIONS) -c -o inventaire.o inventaire.cpp
 
 testdate : testdate.cpp date.o
